@@ -11,13 +11,30 @@ config_version=5
 [application]
 
 config/name="Zed"
-run/main_scene="res://scenes/main.tscn"
+run/main_scene="res://scenes/splash_screen.tscn"
 config/features=PackedStringArray("4.1", "C#", "Forward Plus")
+boot_splash/image="res://scenes/EditorSplashScreen.png"
 config/icon="res://icon.svg"
+
+[aseprite_importers]
+
+aseprite_executable_path="G:/aseprite/aseprite-windows-docker-build/bin/aseprite.exe"
+
+[display]
+
+window/size/borderless=true
 
 [dotnet]
 
 project/assembly_name="Zed"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/nklbdev.aseprite_importers/plugin.cfg")
+
+[filesystem]
+
+import/fbx/enabled=false
 
 [input]
 
@@ -46,3 +63,7 @@ quit={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194305,"key_label":0,"unicode":0,"echo":false,"script":null)
 ]
 }
+
+[rendering]
+
+environment/defaults/default_clear_color=Color(0.0901961, 0.0901961, 0.0901961, 1)

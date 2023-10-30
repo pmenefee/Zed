@@ -1,10 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://4qhy765phh8l"]
+[gd_scene load_steps=11 format=3 uid="uid://4qhy765phh8l"]
 
 [ext_resource type="Texture2D" uid="uid://c8arnlq67qi7" path="res://assets/textures/grids/Dark/texture_05.png" id="1_b88c1"]
-[ext_resource type="Script" path="res://scenes/main.cs" id="1_j7ibg"]
 [ext_resource type="Texture2D" uid="uid://b58xv1joypxo5" path="res://assets/textures/grids/Orange/texture_09.png" id="2_uay2q"]
 [ext_resource type="Texture2D" uid="uid://cm5m7nr7dugjd" path="res://assets/textures/grids/Purple/texture_09.png" id="3_ild2u"]
-[ext_resource type="PackedScene" uid="uid://ccy8ctu86eqav" path="res://scenes/player.tscn" id="5_ft16n"]
+[ext_resource type="PackedScene" uid="uid://ccy8ctu86eqav" path="res://scenes/player.tscn" id="5_xjwou"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_nkdxt"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -34,7 +33,6 @@ albedo_texture = ExtResource("3_ild2u")
 uv1_triplanar = true
 
 [node name="World" type="Node3D"]
-script = ExtResource("1_j7ibg")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
@@ -57,9 +55,73 @@ material_override = SubResource("StandardMaterial3D_ucvqt")
 use_collision = true
 
 [node name="box2" type="CSGBox3D" parent="Map"]
-transform = Transform3D(-0.354683, 0, 0.934987, 0, 1, 0, -0.934987, 0, -0.354683, -2.69538, 1, -8.41339)
+transform = Transform3D(-0.298136, 0, 1.35281, 0, 0.987423, 0, -0.785923, 0, -0.513181, -2.69538, 1, -8.41339)
 material_override = SubResource("StandardMaterial3D_c1qkt")
 use_collision = true
 size = Vector3(2, 2, 2)
 
-[node name="player" parent="." instance=ExtResource("5_ft16n")]
+[node name="player" parent="." instance=ExtResource("5_xjwou")]
+transform = Transform3D(-0.993228, -0.00668405, -0.115993, -2.51468e-09, 0.998344, -0.0575292, 0.116185, -0.0571396, -0.991583, 0, 0, 0)
+
+[node name="Skeleton3D" parent="player/Armature/Armature" index="0"]
+bones/0/position = Vector3(-2.70872, 9.37104, -87.306)
+bones/0/rotation = Quaternion(-0.716808, 0.00193381, -0.00847794, 0.697216)
+bones/1/rotation = Quaternion(-0.0516254, -0.00315757, 0.00136473, 0.998661)
+bones/2/rotation = Quaternion(0.00489428, -0.0247479, 0.00158206, 0.999681)
+bones/3/rotation = Quaternion(0.00471886, -0.0246946, 0.00190432, 0.999682)
+bones/4/rotation = Quaternion(0.0554444, 0.0178449, -0.0111758, 0.99824)
+bones/5/position = Vector3(5.21541e-07, 1.87091, 0.997072)
+bones/5/rotation = Quaternion(0.0686953, 0.00280314, 0.0250986, 0.997318)
+bones/7/rotation = Quaternion(-0.516589, -0.454244, 0.611948, -0.39028)
+bones/8/position = Vector3(1.03553e-06, 12.6484, -1.03846e-08)
+bones/8/rotation = Quaternion(0.491166, 0.17007, 0.0322237, 0.853694)
+bones/9/position = Vector3(-5.62096e-06, 24.2516, -1.41724e-05)
+bones/9/rotation = Quaternion(0.000190297, 0.00865245, 0.369415, 0.929224)
+bones/10/position = Vector3(-3.70242e-06, 30.1456, 8.69897e-06)
+bones/10/rotation = Quaternion(0.00121983, 0.0975323, -0.203262, 0.974254)
+bones/11/position = Vector3(-2.46788, 1.54412, 1.61136e-06)
+bones/11/rotation = Quaternion(-0.00873215, -0.0827068, 0.25384, 0.963664)
+bones/12/position = Vector3(-0.637682, 2.23991, -1.87626e-05)
+bones/12/rotation = Quaternion(0.12805, 0.0242785, -0.131783, 0.982673)
+bones/13/position = Vector3(-0.22948, 3.09149, 2.67161e-05)
+bones/13/rotation = Quaternion(0.00668269, 0.00932933, -0.0184941, 0.999763)
+bones/14/position = Vector3(0.867164, 2.02739, -2.23946e-05)
+bones/15/position = Vector3(-3.08696e-06, 3.93625, 0.0238727)
+bones/15/rotation = Quaternion(0.373553, 0.0247024, 0.0663716, 0.924902)
+bones/16/position = Vector3(-0.0449157, 4.74022, 1.56282e-05)
+bones/16/rotation = Quaternion(0.184015, -0.00678654, -0.020404, 0.982688)
+bones/17/position = Vector3(0.0664787, 4.28567, -1.88215e-05)
+bones/17/rotation = Quaternion(0.179283, 0.00110664, -0.0060692, 0.983778)
+bones/18/position = Vector3(-0.0215521, 3.49732, 2.0057e-05)
+bones/19/rotation = Quaternion(0.567681, -0.430719, 0.559148, 0.423761)
+bones/20/position = Vector3(1.34057e-06, 12.6484, -9.59323e-06)
+bones/20/rotation = Quaternion(0.501714, -0.148086, -0.0534259, 0.850587)
+bones/21/position = Vector3(-7.38223e-06, 24.2499, 1.27382e-06)
+bones/21/rotation = Quaternion(-0.00129686, -0.0080317, -0.352529, 0.935766)
+bones/22/position = Vector3(-1.00115e-06, 30.1308, -2.3949e-06)
+bones/22/rotation = Quaternion(-0.0668021, -0.0402309, 0.175329, 0.981417)
+bones/23/position = Vector3(2.44301, 1.80136, 7.56979e-06)
+bones/23/rotation = Quaternion(-0.0173468, 0.0117597, -0.22843, 0.973335)
+bones/24/position = Vector3(0.369438, 2.39997, -1.61197e-05)
+bones/24/rotation = Quaternion(0.107545, -0.0374384, 0.0772778, 0.990485)
+bones/25/position = Vector3(-0.208169, 3.25159, 1.29954e-05)
+bones/25/rotation = Quaternion(-0.017323, -0.0031135, 0.00449304, 0.999835)
+bones/26/position = Vector3(-0.161277, 2.33051, 1.92523e-05)
+bones/27/position = Vector3(7.67736e-06, 4.00257, 0.0141286)
+bones/27/rotation = Quaternion(0.145217, -0.00915692, 0.0231344, 0.989087)
+bones/28/position = Vector3(-0.0219045, 4.76625, -3.06918e-05)
+bones/28/rotation = Quaternion(0.37703, -0.00295458, 0.0375965, 0.925433)
+bones/29/position = Vector3(0.00860214, 4.40219, 3.83706e-07)
+bones/29/rotation = Quaternion(0.0976485, -0.000474971, 0.00940887, 0.995176)
+bones/30/position = Vector3(0.0132999, 3.48017, 1.03414e-05)
+bones/31/rotation = Quaternion(0.0408371, 0.0412904, 0.996846, -0.0540825)
+bones/32/rotation = Quaternion(-0.160331, -0.0788894, 0.0105035, 0.98385)
+bones/33/rotation = Quaternion(0.595625, -0.0796902, -0.024536, 0.798923)
+bones/34/rotation = Quaternion(0.256083, 0.022551, -0.00595881, 0.966373)
+bones/36/rotation = Quaternion(-0.0955407, 0.0514262, 0.993349, 0.0385381)
+bones/37/rotation = Quaternion(-0.160388, 0.0412183, 0.00186704, 0.986191)
+bones/38/rotation = Quaternion(0.602035, 0.0843582, -0.00859408, 0.793955)
+bones/39/rotation = Quaternion(0.239918, -0.0172351, 0.0046359, 0.970629)
+
+[editable path="player"]
+[editable path="player/Armature"]
