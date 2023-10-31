@@ -11,10 +11,9 @@ config_version=5
 [application]
 
 config/name="Zed"
-run/main_scene="res://scenes/splash_screen.tscn"
+run/main_scene="res://scenes/main.tscn"
 config/features=PackedStringArray("4.1", "C#", "Forward Plus")
-boot_splash/image="res://scenes/EditorSplashScreen.png"
-config/icon="res://icon.svg"
+boot_splash/image="res://scenes/splash_screen/EditorSplashScreen.png"
 
 [aseprite_importers]
 
@@ -27,10 +26,6 @@ window/size/borderless=true
 [dotnet]
 
 project/assembly_name="Zed"
-
-[editor_plugins]
-
-enabled=PackedStringArray("res://addons/nklbdev.aseprite_importers/plugin.cfg")
 
 [filesystem]
 

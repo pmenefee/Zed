@@ -1,0 +1,62 @@
+[gd_scene load_steps=5 format=3 uid="uid://b124pn20gys21"]
+
+[ext_resource type="Script" path="res://scenes/splash_screen/splash_screen.cs" id="1_n0xvk"]
+[ext_resource type="Texture2D" uid="uid://b0v0vj6aa08bp" path="res://scenes/splash_screen/Zed.png" id="2_25vfp"]
+
+[sub_resource type="Animation" id="Animation_ipmvq"]
+resource_name = "do_splash"
+length = 4.0
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Zed:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Zed:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-78, -0.25, 0, 0.25, 0, 337, -1.3, 163, 0.5, -32),
+"times": PackedFloat32Array(0, 1.9)
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Zed:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kx3jv"]
+_data = {
+"do_splash": SubResource("Animation_ipmvq")
+}
+
+[node name="SplashScreen" type="Node2D"]
+script = ExtResource("1_n0xvk")
+
+[node name="Zed" type="Sprite2D" parent="."]
+position = Vector2(576, -78)
+texture = ExtResource("2_25vfp")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "do_splash"
+libraries = {
+"": SubResource("AnimationLibrary_kx3jv")
+}
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
