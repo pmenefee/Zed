@@ -1,3 +1,4 @@
+class_name Player
 extends CharacterBody3D
 
 @onready var armature = $Armature
@@ -5,16 +6,18 @@ extends CharacterBody3D
 @onready var spring_arm = $SpringArmPivot/SpringArm3D
 @onready var animation_tree = $AnimationTree
 
-@export var SPEED:  = 5.0
+@export var SPEED:  = 1.5
 @export var JUMP_VELOCITY: = 4.5
 @export var LERP_VALUE: = .15
+# Higher the number the more sensitive.
+@export var CAMERA_SENSITIVITY = .005
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	animation_tree.active = true
+	animation_tree.active = true		
 
 #func _process(delta):
 #	update_animation_parameters()
@@ -24,8 +27,8 @@ func _unhandled_input(event):
 		get_tree().quit()
 
 	if event is InputEventMouseMotion:
-		spring_arm_pivot.rotate_y(-event.relative.x * .005)
-		spring_arm.rotate_x(-event.relative.y * .005)
+		spring_arm_pivot.rotate_y(-event.relative.x * CAMERA_SENSITIVITY)
+		spring_arm.rotate_x(-event.relative.y * CAMERA_SENSITIVITY)
 		spring_arm.rotation.x = clamp(spring_arm.rotation.x, -PI/4, PI/4)
 
 func _physics_process(delta):
@@ -58,3 +61,4 @@ func _physics_process(delta):
 
 	move_and_slide()
 
+	

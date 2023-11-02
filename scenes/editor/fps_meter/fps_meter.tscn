@@ -18,6 +18,7 @@ offset_bottom = 155.0
 texture = ExtResource("2_royla")
 
 [node name="FPSMeter" type="Label" parent="NinePatchRect"]
+layout_mode = 0
 offset_right = 81.0
 offset_bottom = 27.0
 theme = ExtResource("2_3712x")
