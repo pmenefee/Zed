@@ -14,6 +14,7 @@ config/name="Zed"
 config/tags=PackedStringArray("active")
 run/main_scene="res://scenes/main.tscn"
 config/features=PackedStringArray("4.1", "C#", "Forward Plus")
+boot_splash/show_image=false
 boot_splash/image="res://scenes/splash_screen/EditorSplashScreen.png"
 
 [aseprite_importers]
@@ -64,6 +65,21 @@ toggle_fullscreen={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194342,"key_label":0,"unicode":0,"echo":false,"script":null)
 ]
 }
+inventory={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194306,"key_label":0,"unicode":0,"echo":false,"script":null)
+]
+}
+Interact={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":69,"key_label":0,"unicode":101,"echo":false,"script":null)
+]
+}
+
+[layer_names]
+
+3d_physics/layer_1="Base"
+3d_physics/layer_3="Interactable"
 
 [rendering]
 

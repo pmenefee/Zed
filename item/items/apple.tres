@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=4 format=3 uid="uid://cua6mfc2kufd"]
+
+[ext_resource type="Script" path="res://item/item_data.gd" id="1_kfyj4"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_qqy1n"]
+load_path = "res://.godot/imported/#1 - Transparent Icons.png-cfb162c63d075773953986fd2d2afadb.s3tc.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_62sid"]
+atlas = SubResource("CompressedTexture2D_qqy1n")
+region = Rect2(0, 448, 32, 32)
+
+[resource]
+script = ExtResource("1_kfyj4")
+name = ""
+description = "A tasty apple"
+stackable = true
+texture = SubResource("AtlasTexture_62sid")

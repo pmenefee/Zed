@@ -1,10 +1,13 @@
 class_name Player
 extends CharacterBody3D
 
+signal toggle_inventory()
+
 @onready var armature = $Armature
 @onready var spring_arm_pivot = $SpringArmPivot
 @onready var spring_arm = $SpringArmPivot/SpringArm3D
 @onready var animation_tree = $AnimationTree
+@onready var interact_ray: RayCast3D = $SpringArmPivot/SpringArm3D/Camera3D/InteractRay
 
 @export var SPEED:  = 1.5
 @export var JUMP_VELOCITY: = 4.5
@@ -12,12 +15,15 @@ extends CharacterBody3D
 # Higher the number the more sensitive.
 @export var CAMERA_SENSITIVITY = .005
 
+@export var inventory_data: InventoryData
+
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	animation_tree.active = true		
+	print("Player ready")
 
 #func _process(delta):
 #	update_animation_parameters()
@@ -30,6 +36,13 @@ func _unhandled_input(event):
 		spring_arm_pivot.rotate_y(-event.relative.x * CAMERA_SENSITIVITY)
 		spring_arm.rotate_x(-event.relative.y * CAMERA_SENSITIVITY)
 		spring_arm.rotation.x = clamp(spring_arm.rotation.x, -PI/4, PI/4)
+
+	#Inventory
+	if Input.is_action_just_pressed("inventory"):
+		toggle_inventory.emit()
+		
+	if Input.is_action_just_pressed("Interact"):
+		interact()
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -61,4 +74,6 @@ func _physics_process(delta):
 
 	move_and_slide()
 
-	
+func interact() -> void:
+	if interact_ray.is_colliding():
+		interact_ray.get_collider().player_interact()
