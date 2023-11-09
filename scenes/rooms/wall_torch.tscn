@@ -90,6 +90,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.169975, 0, 0.316273)
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="Torch_Wall"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.364201, 0.260473)
+visible = false
 amount = 200
 lifetime = 0.5
 randomness = 1.0
@@ -100,6 +101,8 @@ draw_pass_1 = SubResource("QuadMesh_renl0")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Torch_Wall"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.354832, 0.233008)
+light_color = Color(0.662745, 0.423529, 0.219608, 1)
+light_energy = 5.883
 
 [node name="Dungeon_Big_Wall" parent="." instance=ExtResource("3_4ol8a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0283493, -2.24238, -0.0399009)
