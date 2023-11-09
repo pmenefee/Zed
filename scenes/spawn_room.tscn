@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bc808b2erfsr" path="res://assets/dungeon/furniture/Chest-with-lid.glb" id="3_412fj"]
 [ext_resource type="ArrayMesh" uid="uid://dx5cjwyt38yak" path="res://assets/dungeon/tiles/obj/Dungeon_Wall.obj" id="3_xohio"]
 [ext_resource type="ArrayMesh" uid="uid://cadk7mbwbmhob" path="res://assets/dungeon/tiles/obj/Dungeon_Big_Passage.obj" id="4_nktnl"]
-[ext_resource type="PackedScene" uid="uid://cexsiwc1d4grg" path="res://scenes/rooms/wall_torch.tscn" id="4_uyhtd"]
+[ext_resource type="PackedScene" uid="uid://cexsiwc1d4grg" path="res://scenes/dungeon/wall_torch.tscn" id="4_uyhtd"]
 [ext_resource type="PackedScene" uid="uid://bgq3fs0heg7ed" path="res://assets/dungeon/tiles/Dungeon_Big.glb" id="6_tpm7x"]
 [ext_resource type="PackedScene" uid="uid://c4x3jkmvfnaeg" path="res://interactables/chest.tscn" id="8_shh1w"]
 
