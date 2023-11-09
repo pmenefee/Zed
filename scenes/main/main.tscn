@@ -1,0 +1,268 @@
+[gd_scene load_steps=26 format=3 uid="uid://4qhy765phh8l"]
+
+[ext_resource type="Script" path="res://core/game_controller.gd" id="1_7yos5"]
+[ext_resource type="Shader" path="res://scenes/Clouds/clouds.gdshader" id="1_j8caq"]
+[ext_resource type="Texture2D" uid="uid://dyshw81wmob45" path="res://materials/grids/Green/texture_10.png" id="1_s42te"]
+[ext_resource type="Script" path="res://scenes/main/main.gd" id="1_vrj5s"]
+[ext_resource type="Texture2D" uid="uid://cucgybt6ybemg" path="res://materials/grids/Orange/texture_01.png" id="2_34hax"]
+[ext_resource type="CompressedTexture3D" uid="uid://dbfbysid168mx" path="res://scenes/Clouds/perlworlnoise.tga" id="2_gxoys"]
+[ext_resource type="Texture2D" uid="uid://d3x3iw6rpcpt1" path="res://scenes/Clouds/weather.bmp" id="3_5h67a"]
+[ext_resource type="Texture2D" uid="uid://dmxmgw3rh0ym2" path="res://materials/grids/Purple/texture_01.png" id="3_yn2rf"]
+[ext_resource type="CompressedTexture3D" uid="uid://c4dp6g6gouj2b" path="res://scenes/Clouds/worlnoise.bmp" id="4_0l86y"]
+[ext_resource type="PackedScene" uid="uid://ccy8ctu86eqav" path="res://scenes/player/player.tscn" id="5_xjwou"]
+[ext_resource type="PackedScene" uid="uid://bet32i7ph0c0k" path="res://scenes/scenelauncher/scenelauncher01.tscn" id="9_r6qay"]
+[ext_resource type="Resource" uid="uid://xjav2jvm3vr2" path="res://inventory/player_inventory.tres" id="10_pl6in"]
+[ext_resource type="PackedScene" uid="uid://cqh7qgyk1i8l3" path="res://inventory/inventory.tscn" id="11_sphp7"]
+[ext_resource type="Script" path="res://inventory/inventory_interface.gd" id="13_e5isi"]
+[ext_resource type="PackedScene" uid="uid://ckjlo5wmuq2c3" path="res://inventory/slot.tscn" id="15_sc3mo"]
+[ext_resource type="PackedScene" uid="uid://cdr5bsqcqbeg6" path="res://scenes/dungeon/jail_wall.tscn" id="18_37hro"]
+[ext_resource type="PackedScene" uid="uid://dfo1lyjt86psv" path="res://scenes/spawn_room.tscn" id="20_cgtw5"]
+[ext_resource type="PackedScene" uid="uid://dfatwedeq7x16" path="res://scenes/dungeon/hallway_curve_long.tscn" id="21_ljpk7"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_udgw8"]
+shader = ExtResource("1_j8caq")
+shader_parameter/wind_direction = Vector2(1, 0)
+shader_parameter/wind_speed = 1.0
+shader_parameter/_density = 0.05
+shader_parameter/cloud_coverage = 0.138
+shader_parameter/_time_offset = 59.0
+shader_parameter/rayleigh = 2.0
+shader_parameter/rayleigh_color = Color(0.26, 0.41, 0.58, 1)
+shader_parameter/mie = 0.005
+shader_parameter/mie_eccentricity = 0.8
+shader_parameter/mie_color = Color(0.63, 0.77, 0.92, 1)
+shader_parameter/turbidity = 10.0
+shader_parameter/sun_disk_scale = 1.0
+shader_parameter/ground_color = Color(0.282353, 0.513726, 0.278431, 1)
+shader_parameter/exposure = 0.2
+shader_parameter/worlnoise = ExtResource("4_0l86y")
+shader_parameter/perlworlnoise = ExtResource("2_gxoys")
+shader_parameter/weathermap = ExtResource("3_5h67a")
+
+[sub_resource type="Sky" id="Sky_0fkbh"]
+sky_material = SubResource("ShaderMaterial_udgw8")
+
+[sub_resource type="Environment" id="Environment_4ldln"]
+background_mode = 2
+sky = SubResource("Sky_0fkbh")
+tonemap_mode = 2
+sdfgi_enabled = true
+glow_enabled = true
+volumetric_fog_enabled = true
+volumetric_fog_albedo = Color(0.513726, 0.717647, 0.92549, 1)
+volumetric_fog_emission_energy = 0.5
+volumetric_fog_gi_inject = 0.5
+volumetric_fog_anisotropy = -0.44
+volumetric_fog_length = 10.0
+volumetric_fog_detail_spread = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7a7ms"]
+albedo_texture = ExtResource("1_s42te")
+uv1_scale = Vector3(500, 500, 500)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ucvqt"]
+albedo_texture = ExtResource("2_34hax")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c1qkt"]
+albedo_texture = ExtResource("3_yn2rf")
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yo5ov"]
+albedo_color = Color(0.811765, 0.203922, 0.372549, 1)
+
+[node name="World" type="Node3D"]
+script = ExtResource("1_vrj5s")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_4ldln")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, -0.401529, 0.900244, 0.168333, -0.297952, 0.0453984, -0.953501, 0, 14.6045, 0)
+light_color = Color(0.678431, 0.517647, 0.105882, 1)
+shadow_enabled = true
+
+[node name="Map" type="Node3D" parent="."]
+visible = false
+
+[node name="Floor" type="CSGBox3D" parent="Map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+material_override = SubResource("StandardMaterial3D_7a7ms")
+use_collision = true
+size = Vector3(1000, 1, 1000)
+
+[node name="box" type="CSGBox3D" parent="Map"]
+transform = Transform3D(0.892515, 0, -0.451018, 0, 1, 0, 0.451018, 0, 0.892515, 4.3184, 0.5, 2.59251)
+material_override = SubResource("StandardMaterial3D_ucvqt")
+use_collision = true
+
+[node name="box2" type="CSGBox3D" parent="Map"]
+transform = Transform3D(-0.298136, 0, 1.35281, 0, 0.987423, 0, -0.785923, 0, -0.513181, -2.69538, 1, -8.41339)
+material_override = SubResource("StandardMaterial3D_c1qkt")
+use_collision = true
+size = Vector3(2, 2, 2)
+
+[node name="player" parent="." groups=["Persist"] instance=ExtResource("5_xjwou")]
+transform = Transform3D(-0.993228, -0.00668405, -0.115993, -2.51468e-09, 0.998344, -0.0575292, 0.116185, -0.0571396, -0.991583, 0, 0, 0)
+inventory_data = ExtResource("10_pl6in")
+
+[node name="Skeleton3D" parent="player/Armature/Armature" index="0"]
+bones/0/position = Vector3(-3.75788, 9.16381, -86.9417)
+bones/0/rotation = Quaternion(-0.722055, -0.00107017, -0.00135207, 0.691834)
+bones/1/rotation = Quaternion(-0.0483689, -0.00317913, 0.00192056, 0.998823)
+bones/2/rotation = Quaternion(0.00957545, -0.0265477, 0.00314035, 0.999597)
+bones/3/rotation = Quaternion(0.00934651, -0.0264843, 0.00358488, 0.999599)
+bones/4/rotation = Quaternion(0.0673861, 0.0158763, -0.0137366, 0.997506)
+bones/5/position = Vector3(5.21541e-07, 1.87091, 0.997072)
+bones/5/rotation = Quaternion(0.0704325, -0.00541268, 0.0270043, 0.997136)
+bones/7/rotation = Quaternion(-0.536907, -0.436892, 0.611291, -0.38364)
+bones/8/position = Vector3(1.03553e-06, 12.6484, -1.03846e-08)
+bones/8/rotation = Quaternion(0.480299, 0.173232, 0.053207, 0.85818)
+bones/9/position = Vector3(-5.62096e-06, 24.2516, -1.41724e-05)
+bones/9/rotation = Quaternion(-0.000548087, 0.00838027, 0.363948, 0.931381)
+bones/10/position = Vector3(-3.70242e-06, 30.1456, 8.69897e-06)
+bones/10/rotation = Quaternion(0.00444687, 0.0862214, -0.206702, 0.974587)
+bones/11/position = Vector3(-2.46788, 1.54412, 1.61136e-06)
+bones/11/rotation = Quaternion(-0.00972918, -0.0840958, 0.252454, 0.963898)
+bones/12/position = Vector3(-0.637682, 2.23991, -1.87626e-05)
+bones/12/rotation = Quaternion(0.127114, 0.0202291, -0.129407, 0.983202)
+bones/13/position = Vector3(-0.22948, 3.09149, 2.67161e-05)
+bones/13/rotation = Quaternion(0.00609053, 0.00958918, -0.0164728, 0.9998)
+bones/14/position = Vector3(0.867164, 2.02739, -2.23946e-05)
+bones/15/position = Vector3(-3.08696e-06, 3.93625, 0.0238727)
+bones/15/rotation = Quaternion(0.375627, 0.0250939, 0.0655741, 0.924108)
+bones/16/position = Vector3(-0.0449157, 4.74022, 1.56282e-05)
+bones/16/rotation = Quaternion(0.195834, -0.00705494, -0.0212112, 0.980382)
+bones/17/position = Vector3(0.0664787, 4.28567, -1.88215e-05)
+bones/17/rotation = Quaternion(0.193227, 0.00128843, -0.00706643, 0.981128)
+bones/18/position = Vector3(-0.0215521, 3.49732, 2.0057e-05)
+bones/19/rotation = Quaternion(0.592998, -0.411223, 0.549857, 0.420602)
+bones/20/position = Vector3(1.34057e-06, 12.6484, -9.59323e-06)
+bones/20/rotation = Quaternion(0.481185, -0.147662, -0.0729255, 0.86101)
+bones/21/position = Vector3(-7.38223e-06, 24.2499, 1.27382e-06)
+bones/21/rotation = Quaternion(-0.00106707, -0.00811514, -0.354211, 0.93513)
+bones/22/position = Vector3(-1.00115e-06, 30.1308, -2.3949e-06)
+bones/22/rotation = Quaternion(-0.0634531, -0.0252585, 0.17661, 0.981909)
+bones/23/position = Vector3(2.44301, 1.80136, 7.56979e-06)
+bones/23/rotation = Quaternion(-0.0168445, 0.0146586, -0.231857, 0.972494)
+bones/24/position = Vector3(0.369438, 2.39997, -1.61197e-05)
+bones/24/rotation = Quaternion(0.109432, -0.0408731, 0.0805078, 0.989885)
+bones/25/position = Vector3(-0.208169, 3.25159, 1.29954e-05)
+bones/25/rotation = Quaternion(-0.0171702, -0.00310277, 0.00516662, 0.999834)
+bones/26/position = Vector3(-0.161277, 2.33051, 1.92523e-05)
+bones/27/position = Vector3(7.67736e-06, 4.00257, 0.0141286)
+bones/27/rotation = Quaternion(0.139008, -0.00917109, 0.0233315, 0.989974)
+bones/28/position = Vector3(-0.0219045, 4.76625, -3.06918e-05)
+bones/28/rotation = Quaternion(0.397901, -0.00315258, 0.0401159, 0.916545)
+bones/29/position = Vector3(0.00860214, 4.40219, 3.83706e-07)
+bones/29/rotation = Quaternion(0.101428, -0.00049755, 0.00985637, 0.994794)
+bones/30/position = Vector3(0.0132999, 3.48017, 1.03414e-05)
+bones/31/rotation = Quaternion(0.0485566, 0.0433576, 0.996162, -0.0585198)
+bones/32/rotation = Quaternion(-0.180972, -0.0805271, 0.0146927, 0.980076)
+bones/33/rotation = Quaternion(0.60233, -0.0814776, -0.0355883, 0.79328)
+bones/34/rotation = Quaternion(0.255836, 0.0225718, -0.00596132, 0.966438)
+bones/36/rotation = Quaternion(-0.0885308, 0.0613389, 0.993531, 0.0360041)
+bones/37/rotation = Quaternion(-0.19626, 0.0399096, -0.000610609, 0.979739)
+bones/38/rotation = Quaternion(0.618558, 0.0826558, -0.011256, 0.781299)
+bones/39/rotation = Quaternion(0.23999, -0.0173534, 0.0046093, 0.970609)
+
+[node name="MainMesh" parent="player/Armature/Armature/Skeleton3D" index="4"]
+transform = Transform3D(1, 0, -9.31323e-10, -7.45058e-09, 1, 0, 9.31323e-10, 3.72529e-09, 1, 0, 0, 0)
+
+[node name="Shoulder bag" parent="player/Armature/Armature/Skeleton3D" index="5"]
+transform = Transform3D(1, 0, -9.31323e-10, -7.45058e-09, 1, 0, 9.31323e-10, 3.72529e-09, 1, 0, 0, 0)
+
+[node name="Sword" parent="player/Armature/Armature/Skeleton3D" index="6"]
+transform = Transform3D(1, 0, -9.31323e-10, -7.45058e-09, 1, 0, 9.31323e-10, 3.72529e-09, 1, 0, 0, 0)
+
+[node name="Sword-Sheet" parent="player/Armature/Armature/Skeleton3D" index="7"]
+transform = Transform3D(1, 0, -9.31323e-10, -7.45058e-09, 1, 0, 9.31323e-10, 3.72529e-09, 1, 0, 0, 0)
+
+[node name="sign" type="Node3D" parent="."]
+transform = Transform3D(-0.58633, 0, -0.810072, 0, 1, 0, 0.810072, 0, -0.58633, 3.36187, 0, -8.23393)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="sign"]
+radius = 0.116388
+
+[node name="CSGBox3D" type="CSGBox3D" parent="sign/CSGCylinder3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.20585, 0)
+size = Vector3(0.165038, 0.489883, 1)
+
+[node name="Label3D" type="Label3D" parent="sign/CSGCylinder3D/CSGBox3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.0929885, 0.145897, 0)
+text = "sq = 1 meter"
+font_size = 16
+
+[node name="sign2" type="Node3D" parent="."]
+transform = Transform3D(-0.99989, 0, 0.0147826, 0, 1, 0, -0.0147826, 0, -0.99989, 12.4862, 0, -1.79495)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="sign2"]
+radius = 0.116388
+
+[node name="CSGBox3D" type="CSGBox3D" parent="sign2/CSGCylinder3D"]
+transform = Transform3D(1, 0, -7.45058e-09, 0, 1, 0, 7.45058e-09, 0, 1, -0.00126553, 1.22886, 0.0133333)
+size = Vector3(0.165038, 0.489883, 1)
+material = SubResource("StandardMaterial3D_yo5ov")
+
+[node name="Label3D" type="Label3D" parent="sign2/CSGCylinder3D/CSGBox3D"]
+transform = Transform3D(-4.00469e-08, 0, 1, 0, 1, 0, -1, 0, -4.00469e-08, 0.0929852, 0.0129491, 0)
+text = "Teleporter
+
+Status: BROKEN"
+font_size = 16
+
+[node name="GameController" type="Node" parent="."]
+script = ExtResource("1_7yos5")
+
+[node name="scenelauncher01" parent="." instance=ExtResource("9_r6qay")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.9185, 0, -1.75082)
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="InventoryInterface" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("13_e5isi")
+
+[node name="PlayerInventory" parent="UI/InventoryInterface" instance=ExtResource("11_sphp7")]
+layout_mode = 0
+offset_left = 150.0
+offset_top = 10.0
+offset_right = 571.0
+offset_bottom = 160.0
+
+[node name="ExternalInventory" parent="UI/InventoryInterface" instance=ExtResource("11_sphp7")]
+visible = false
+layout_mode = 0
+offset_left = 665.0
+offset_top = 315.0
+offset_right = 1086.0
+offset_bottom = 465.0
+
+[node name="GrabbedSlot" parent="UI/InventoryInterface" instance=ExtResource("15_sc3mo")]
+visible = false
+modulate = Color(1, 1, 1, 0.462745)
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+
+[node name="SpawnRoom" parent="." instance=ExtResource("20_cgtw5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+
+[node name="hallway_curve_long" parent="." instance=ExtResource("21_ljpk7")]
+transform = Transform3D(-0.99945, 0.0331552, -8.74226e-08, 0.0331551, 0.999449, 0.00174533, 5.7954e-05, 0.00174437, -0.999998, 1.19371, 0.0209484, 5.40874)
+
+[node name="hallway_curve_long2" parent="." instance=ExtResource("21_ljpk7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.82768, 0, 8.31112)
+
+[node name="Jail_Wall" parent="." instance=ExtResource("18_37hro")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.298236, -0.791886, 6.30907)
+
+[editable path="player"]
+[editable path="player/Armature"]

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cadk7mbwbmhob"
+path="res://.godot/imported/Dungeon_Big_Passage.obj-f03c5d0b71a82d8fd0aaa74da6144f6b.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Dungeon_Big_Passage.obj-f03c5d0b71a82d8fd0aaa74da6144f6b.mesh"]
+
+source_file="res://assets/dungeon/tiles/obj/Dungeon_Big_Passage.obj"
+dest_files=["res://.godot/imported/Dungeon_Big_Passage.obj-f03c5d0b71a82d8fd0aaa74da6144f6b.mesh", "res://.godot/imported/Dungeon_Big_Passage.obj-f03c5d0b71a82d8fd0aaa74da6144f6b.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

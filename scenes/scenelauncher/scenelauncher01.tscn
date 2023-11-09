@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bet32i7ph0c0k"]
+
+[ext_resource type="Script" path="res://scenes/scenelauncher/scenelauncher01.gd" id="1_vvnkh"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ygatr"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_865fx"]
+
+[node name="scenelauncher01" type="Area3D"]
+script = ExtResource("1_vvnkh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+visibility_parent = NodePath("../MeshInstance3D")
+shape = SubResource("BoxShape3D_ygatr")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.162537, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("BoxMesh_865fx")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
