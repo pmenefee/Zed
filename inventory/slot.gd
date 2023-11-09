@@ -1,5 +1,6 @@
 extends PanelContainer
 
+# 24:05
 signal slot_clicked(index: int, button: int)
 
 @onready var texture_rect: TextureRect = $MarginContainer/TextureRect
@@ -11,9 +12,9 @@ func set_slot_data(slot_data: SlotData) -> void:
 	tooltip_text = "%s\n%s" % [item_data.name, item_data.description]
 
 	if slot_data.quantity > 1:
-		quantity_label.text = "x%s" % slot_data.quantity
+		quantity_label.text = "%s" % slot_data.quantity
 		quantity_label.show()
-	else:
+	else: # 33:35
 		quantity_label.hide()
 
 func _on_gui_input(event):

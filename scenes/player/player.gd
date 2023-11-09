@@ -7,8 +7,10 @@ signal toggle_inventory()
 @onready var spring_arm_pivot = $SpringArmPivot
 @onready var spring_arm = $SpringArmPivot/SpringArm3D
 @onready var animation_tree = $AnimationTree
-@onready var interact_ray: RayCast3D = $SpringArmPivot/SpringArm3D/Camera3D/InteractRay
+@onready var interact_ray: RayCast3D = $Armature/InteractRay
+@onready var crosshairs: ColorRect = $Crosshairs
 
+@export var CROSSHAIRS: bool = false
 @export var SPEED:  = 1.5
 @export var JUMP_VELOCITY: = 4.5
 @export var LERP_VALUE: = .15
@@ -23,7 +25,9 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	animation_tree.active = true		
+	crosshairs.visible = CROSSHAIRS
 	print("Player ready")
+	
 
 #func _process(delta):
 #	update_animation_parameters()
@@ -40,7 +44,7 @@ func _unhandled_input(event):
 	#Inventory
 	if Input.is_action_just_pressed("inventory"):
 		toggle_inventory.emit()
-		
+	
 	if Input.is_action_just_pressed("Interact"):
 		interact()
 
@@ -74,6 +78,9 @@ func _physics_process(delta):
 
 	move_and_slide()
 
+# 40:08
 func interact() -> void:
+	interact_ray.visible = true
 	if interact_ray.is_colliding():
+		print("interact with ", interact_ray.get_collider())
 		interact_ray.get_collider().player_interact()

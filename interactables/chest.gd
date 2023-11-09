@@ -1,4 +1,5 @@
-extends MeshInstance3D
+# 42:20
+extends StaticBody3D
 
 signal toggle_inventory(external_inventory_owner)
 

@@ -2,16 +2,13 @@
 
 [ext_resource type="Script" path="res://inventory/inventory.gd" id="1_vw5yd"]
 
-[node name="Inventory" type="Panel"]
+[node name="Inventory" type="PanelContainer"]
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_vw5yd")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
-modulate = Color(0.67451, 0.054902, 0.498039, 1)
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 2
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8

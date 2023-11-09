@@ -5,10 +5,13 @@ extends Node3D
 @onready var inventory_interface: Control = $UI/InventoryInterface
 
 func _ready() -> void:
+	inventory_interface.visible = false
 	player.toggle_inventory.connect(toggle_inventory_interface)
 	inventory_interface.set_player_inventory_data(player.inventory_data)
 	
-	for node in get_tree().get_nodes_in_group("external_inventory"):
+	# 43:10
+	for node in get_tree().get_nodes_in_group("external_inventory"):		
+		print("node ", node)
 		node.toggle_inventory.connect(toggle_inventory_interface)
 
 func toggle_inventory_interface(external_inventory_owner = null) -> void:
@@ -19,5 +22,6 @@ func toggle_inventory_interface(external_inventory_owner = null) -> void:
 	else:
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 		
+	# 44:10
 	if external_inventory_owner:
 		inventory_interface.set_external_inventory(external_inventory_owner)

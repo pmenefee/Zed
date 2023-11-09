@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://dfatwedeq7x16"]
+
+[ext_resource type="PackedScene" uid="uid://bvejlwos3h7x3" path="res://assets/dungeon/tiles/hallway_curve_long/Hallway_Curve_Long.glb" id="1_mjwhm"]
+[ext_resource type="PackedScene" uid="uid://cexsiwc1d4grg" path="res://scenes/rooms/wall_torch.tscn" id="2_xgep5"]
+
+[node name="hallway_curve_long" type="Node3D"]
+
+[node name="Hallway_Curve_Long" parent="." instance=ExtResource("1_mjwhm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.139298, 1.19209e-07, -0.46312)
+
+[node name="Wall_Torch" parent="." instance=ExtResource("2_xgep5")]
+transform = Transform3D(0.974035, 0, 0.226396, 0.0262765, 0.993242, -0.11305, -0.224866, 0.116064, 0.967452, 0.153643, 1.46911, -2.12389)

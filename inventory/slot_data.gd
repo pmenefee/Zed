@@ -6,19 +6,22 @@ const MAX_STACK_SIZE: int = 99
 @export var item_data: ItemData
 @export_range(1, MAX_STACK_SIZE) var quantity: int = 1: set = set_quantity
 
+# 38:34
 func can_merge_with(other_slot_data: SlotData) -> bool:
 	return item_data == other_slot_data.item_data \
 		and item_data.stackable \
 		and quantity < MAX_STACK_SIZE
-
+# 34:20
 func can_fully_merge_with(other_slot_data: SlotData) -> bool:
 	return item_data == other_slot_data.item_data \
 		and item_data.stackable \
 		and quantity + other_slot_data.quantity <= MAX_STACK_SIZE
 
+# 35:00
 func fully_merge_with(other_slot_data: SlotData) -> void:
 	quantity += other_slot_data.quantity
 
+# 36:30
 func create_single_slot_data() -> SlotData:
 	var new_slot_data = duplicate()
 	new_slot_data.quantity = 1

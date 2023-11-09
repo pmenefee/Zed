@@ -1,0 +1,60 @@
+[gd_scene load_steps=7 format=3 uid="uid://dfo1lyjt86psv"]
+
+[ext_resource type="PackedScene" uid="uid://bjv53bx0aow8e" path="res://assets/dungeon/tiles/FloorTile.glb" id="1_f7kyv"]
+[ext_resource type="PackedScene" uid="uid://bl8r4xhpfw5du" path="res://assets/dungeon/tiles/Dungeon_Big_Passage.glb" id="2_5si5a"]
+[ext_resource type="PackedScene" uid="uid://cplqto2x5fmv8" path="res://assets/dungeon/tiles/Dungeon_Big_Wall.glb" id="2_iveky"]
+[ext_resource type="PackedScene" uid="uid://bc808b2erfsr" path="res://assets/dungeon/furniture/Chest-with-lid.glb" id="3_412fj"]
+[ext_resource type="PackedScene" uid="uid://cexsiwc1d4grg" path="res://scenes/rooms/wall_torch.tscn" id="4_uyhtd"]
+[ext_resource type="PackedScene" uid="uid://bgq3fs0heg7ed" path="res://assets/dungeon/tiles/Dungeon_Big.glb" id="6_tpm7x"]
+
+[node name="SpawnRoom" type="Node3D"]
+
+[node name="Chest-with-lid" parent="." instance=ExtResource("3_412fj")]
+transform = Transform3D(0.72806, 0, -0.685513, 0, 1, 0, 0.685513, 0, 0.72806, 5.27328, 0, -3.25957)
+
+[node name="Walls" type="Node" parent="."]
+
+[node name="Dungeon_Big_Passage" parent="Walls" instance=ExtResource("2_5si5a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0574, 0, 3.82478)
+
+[node name="Dungeon_Big_Wall3" parent="Walls" instance=ExtResource("2_iveky")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.71678, 0, -0.400994)
+
+[node name="Dungeon_Big_Wall2" parent="Walls" instance=ExtResource("2_iveky")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6.03506, -0.123451, -0.0158085)
+
+[node name="Dungeon_Big_Wall" parent="Walls" instance=ExtResource("2_iveky")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.14587, -0.0440888, -4.21304)
+
+[node name="Floor" type="Node" parent="."]
+
+[node name="FloorTile" parent="Floor" instance=ExtResource("1_f7kyv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+visible = false
+
+[node name="FloorTile2" parent="Floor" instance=ExtResource("1_f7kyv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 2)
+visible = false
+
+[node name="FloorTile3" parent="Floor" instance=ExtResource("1_f7kyv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+visible = false
+
+[node name="FloorTile4" parent="Floor" instance=ExtResource("1_f7kyv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -2)
+visible = false
+
+[node name="Wall_Torch" parent="." instance=ExtResource("4_uyhtd")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6.29353, 1.51001, -2.59275)
+
+[node name="Dungeon_Big" parent="." instance=ExtResource("6_tpm7x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.19192, 0, -0.369848)
+
+[node name="AmbientLight" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.48745, 3.00981, -1.73556)
+visible = false
+light_color = Color(0.901961, 0.792157, 0.454902, 1)
+light_size = 0.383
+distance_fade_enabled = true
+distance_fade_begin = 146.39
+omni_range = 31.369
