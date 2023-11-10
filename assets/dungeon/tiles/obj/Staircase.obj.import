@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cpvv3e1y1oqnu"
+path="res://.godot/imported/Staircase.obj-f95df7bd4676b3de6ec5e6c540915aea.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Staircase.obj-f95df7bd4676b3de6ec5e6c540915aea.mesh"]
+
+source_file="res://assets/dungeon/tiles/obj/Staircase.obj"
+dest_files=["res://.godot/imported/Staircase.obj-f95df7bd4676b3de6ec5e6c540915aea.mesh", "res://.godot/imported/Staircase.obj-f95df7bd4676b3de6ec5e6c540915aea.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

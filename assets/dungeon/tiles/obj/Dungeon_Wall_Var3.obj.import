@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cqn6yn3oaiu2y"
+path="res://.godot/imported/Dungeon_Wall_Var3.obj-a0329e758d3ae932a858106e6c917cbb.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Dungeon_Wall_Var3.obj-a0329e758d3ae932a858106e6c917cbb.mesh"]
+
+source_file="res://assets/dungeon/tiles/obj/Dungeon_Wall_Var3.obj"
+dest_files=["res://.godot/imported/Dungeon_Wall_Var3.obj-a0329e758d3ae932a858106e6c917cbb.mesh", "res://.godot/imported/Dungeon_Wall_Var3.obj-a0329e758d3ae932a858106e6c917cbb.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

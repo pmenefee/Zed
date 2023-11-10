@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://b4nylljw4v2ts"
+path="res://.godot/imported/Basement_Var1.obj-503004bfa4d009315a92c48d47cd184e.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Basement_Var1.obj-503004bfa4d009315a92c48d47cd184e.mesh"]
+
+source_file="res://assets/dungeon/tiles/obj/Basement_Var1.obj"
+dest_files=["res://.godot/imported/Basement_Var1.obj-503004bfa4d009315a92c48d47cd184e.mesh", "res://.godot/imported/Basement_Var1.obj-503004bfa4d009315a92c48d47cd184e.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
