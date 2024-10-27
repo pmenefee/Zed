@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://ivrjl0cvculr"]
+
+[ext_resource type="Script" path="res://scenes/editor/fps_meter/FPSMeter.gd" id="1_xf7pu"]
+[ext_resource type="Theme" uid="uid://cscwsmc36qr67" path="res://scenes/editor/fps_meter/debug_ui.tres" id="2_3712x"]
+[ext_resource type="Texture2D" uid="uid://beij681m4whuu" path="res://scenes/editor/fps_meter/FPSmeter_background.png" id="2_royla"]
+
+[node name="fps_meter" type="Control"]
+visibility_layer = 524288
+layout_mode = 3
+anchor_right = 0.131
+anchor_bottom = 0.079
+offset_right = -150.912
+offset_bottom = -51.192
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 7.0
+offset_right = 139.0
+offset_bottom = 162.0
+texture = ExtResource("2_royla")
+
+[node name="FPSMeter" type="Label" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 4.0
+offset_right = 87.0
+offset_bottom = 31.0
+theme = ExtResource("2_3712x")
+text = "FPS: 000"
+script = ExtResource("1_xf7pu")

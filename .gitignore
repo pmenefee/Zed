@@ -1,8 +1,40 @@
-
 # Godot-specific ignores
+.export/
 .import/
-export.cfg
-export_presets.cfg
+*.import
+*.godot
+*.mono/
+*.tmp/
+*.pck
+*.exe
+*.dylib
+*.dll
+*.so
+*.zip
 
 # Mono-specific ignores
 .mono/
+
+# Godot metadata files (generated per editor session)
+.editor_log
+.editor_notes
+.config
+.sconsign.dblite
+*.mono/
+mono_crash.*
+
+# Operating system files (optional)
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Compiled or temporary files (optional)
+*.class
+*.pyc
+*.pyo
+*.rbc
+*.min.js
+
+# User-specific files
+export_presets.cfg
+export.cfg

@@ -1,0 +1,77 @@
+[gd_scene load_steps=12 format=3 uid="uid://cexsiwc1d4grg"]
+
+[ext_resource type="PackedScene" uid="uid://b1jfrqelk8eyp" path="res://assets/dungeon/lamps/Torch_Wall.glb" id="1_rq8r1"]
+[ext_resource type="Texture2D" uid="uid://dcph2efhlf86g" path="res://assets/particles/fire_01.png" id="2_nik7g"]
+[ext_resource type="PackedScene" uid="uid://cplqto2x5fmv8" path="res://assets/dungeon/tiles/Dungeon_Big_Wall.glb" id="3_8q0ff"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pbuo1"]
+blend_mode = 1
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("2_nik7g")
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_ushbv"]
+offsets = PackedFloat32Array(0.0442478, 0.123894, 0.889381, 0.977876)
+colors = PackedColorArray(0, 0, 0, 0, 0.868542, 0.568466, 0.132524, 1, 0.922811, 0.270433, 0.230769, 1, 0.435294, 0.427451, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_vvs0x"]
+gradient = SubResource("Gradient_ushbv")
+
+[sub_resource type="Curve" id="Curve_kkpy0"]
+_data = [Vector2(0.00619835, 0.0194553), 0.0, 0.0, 0, 0, Vector2(0.208678, 0.673152), 0.579468, 0.579468, 0, 0, Vector2(1, 0), -1.43639, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_utn10"]
+curve = SubResource("Curve_kkpy0")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vlnal"]
+lifetime_randomness = 0.65
+direction = Vector3(0, 1, 0)
+spread = 6.76
+gravity = Vector3(0, 10, 0)
+initial_velocity_max = 3.0
+angular_velocity_max = 0.5
+linear_accel_min = -0.59
+linear_accel_max = 9.92
+angle_max = 30.0
+scale_min = 0.5
+scale_curve = SubResource("CurveTexture_utn10")
+color = Color(0.588235, 0.290196, 0.247059, 1)
+color_ramp = SubResource("GradientTexture1D_vvs0x")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ci7x8"]
+albedo_texture = ExtResource("2_nik7g")
+
+[sub_resource type="QuadMesh" id="QuadMesh_ugxjw"]
+lightmap_size_hint = Vector2i(3, 3)
+material = SubResource("StandardMaterial3D_ci7x8")
+
+[node name="Wall_Torch" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.153643, 0, -0.293111)
+
+[node name="Torch_Wall" parent="." instance=ExtResource("1_rq8r1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.169975, 0, 0.316273)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Torch_Wall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.354832, 0.233008)
+light_color = Color(0.662745, 0.423529, 0.219608, 1)
+light_energy = 5.883
+
+[node name="GPUParticles3D2" type="GPUParticles3D" parent="Torch_Wall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.278577, 0.219209)
+visible = false
+material_override = SubResource("StandardMaterial3D_pbuo1")
+amount = 200
+lifetime = 0.41
+explosiveness = 0.13
+randomness = 0.11
+draw_order = 3
+process_material = SubResource("ParticleProcessMaterial_vlnal")
+draw_pass_1 = SubResource("QuadMesh_ugxjw")
+
+[node name="Dungeon_Big_Wall" parent="." instance=ExtResource("3_8q0ff")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0283493, -2.24238, -0.0399009)
+visible = false
