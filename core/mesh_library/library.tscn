@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://defy13htnfvgv"]
+
+[ext_resource type="ArrayMesh" uid="uid://hypohaps80jd" path="res://assets/dungeon/tiles/obj/Dungeon_Big.obj" id="1_rqntd"]
+[ext_resource type="ArrayMesh" uid="uid://cadk7mbwbmhob" path="res://assets/dungeon/tiles/obj/Dungeon_Big_Passage.obj" id="2_skye0"]
+[ext_resource type="ArrayMesh" uid="uid://dx5cjwyt38yak" path="res://assets/dungeon/tiles/obj/Dungeon_Wall.obj" id="3_n3m16"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="DungeonBig" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.2705, 0, -2.77241)
+mesh = ExtResource("1_rqntd")
+
+[node name="DungeonBigPassage" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.537324, 0, -5.88203)
+mesh = ExtResource("2_skye0")
+
+[node name="DungeonWall" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.128829, 0, 0.371042)
+mesh = ExtResource("3_n3m16")

@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://c4x3jkmvfnaeg"]
+
+[ext_resource type="Script" path="res://interactables/chest.gd" id="1_rohr5"]
+[ext_resource type="PackedScene" uid="uid://bc808b2erfsr" path="res://assets/dungeon/furniture/Chest-with-lid.glb" id="2_ds0mk"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x8iu8"]
+albedo_color = Color(0.403922, 0.223529, 0.027451, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_3nw06"]
+material = SubResource("StandardMaterial3D_x8iu8")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_ccqh6"]
+data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+
+[node name="Chest" type="StaticBody3D" groups=["external_inventory"]]
+collision_layer = 5
+collision_mask = 0
+script = ExtResource("1_rohr5")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+visible = false
+mesh = SubResource("BoxMesh_3nw06")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("ConcavePolygonShape3D_ccqh6")
+
+[node name="Chest-with-lid" parent="." instance=ExtResource("2_ds0mk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0591214, 0, -0.0213312)
